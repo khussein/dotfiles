@@ -125,3 +125,5 @@ alias portforward='sudo ipfw add 1000 forward 127.0.0.1,3000 ip from any to any 
 
 alias rdm='rake db:migrate'
 alias rdmr='rake db:migrate:redo'
+
+alias vim='mvim -v'
