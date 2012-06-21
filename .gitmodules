@@ -326,3 +326,15 @@
 	path = vim/bundle/skwp-vim-powerline
 	url = https://github.com/skwp/vim-powerline.git
   ignore = dirty
+[submodule "vim/bundle/petdance-vim-perl"]
+	path = vim/bundle/petdance-vim-perl
+	url = https://github.com/petdance/vim-perl.git
+[submodule "vim/bundle/kana-vim-flymake"]
+	path = vim/bundle/kana-vim-flymake
+	url = https://github.com/kana/vim-flymake.git
+[submodule "vim/bundle/ironcamel-vim-script-runner"]
+	path = vim/bundle/ironcamel-vim-script-runner
+	url = https://github.com/ironcamel/vim-script-runner.git
+[submodule "vim/bundle/vim-scripts-perl-mauke"]
+	path = vim/bundle/vim-scripts-perl-mauke
+	url = https://github.com/vim-scripts/perl-mauke.vim.git
