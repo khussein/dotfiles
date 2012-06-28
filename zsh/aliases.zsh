@@ -127,3 +127,4 @@ alias rdm='rake db:migrate'
 alias rdmr='rake db:migrate:redo'
 
 alias vim='mvim -v'
+alias gc='git clone'
