@@ -128,3 +128,5 @@ alias rdmr='rake db:migrate:redo'
 
 alias vim='mvim -v'
 alias gc='git clone'
+alias diary='mvim -v ~/diary/`date "+%m-%d-%Y"`.md'
+alias gpg='gpg2'

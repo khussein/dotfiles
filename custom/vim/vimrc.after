@@ -1,0 +1,69 @@
+" ================ Indentation ======================
+
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
+" ================ Misc ==============================
+
+set textwidth=80
+set cc=+1
+set clipboard=unnamed
+
+" ================ File Types ========================
+
+filetype plugin on
+filetype indent on
+filetype on
+autocmd bufwritepost *.pm set syntax=perl
+autocmd bufwritepost *.pl set syntax=perl
+autocmd bufread *.md set syntax=markdown
+autocmd bufwritepost *.md set syntax=markdown
+"autocmd bufwritepost *.pl !chmod +x %
+
+" ================ Tabs ==============================
+
+imap <C-l> <Esc>gt
+imap <C-h> <Esc>gT
+inoremap jj <Esc>
+nmap <C-l> gt
+nmap <C-h> gT
+nmap ; :
+
+" ================ VimRC =============================
+
+nmap <Leader>v :tabe ~/.vimrc<CR>
+nmap <Leader>va :tabe ~/.vimrc.after<CR>
+nmap <Leader>s :so ~/.vimrc<CR>
+nmap <Leader>f <c-w>gf
+autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost .vimrc.before source %
+autocmd! bufwritepost .vimrc.after source %
+autocmd! FileType perl set makeprg="perl -llib -c % $*"
+
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+let g:script_runner_perl = '/Users/knighthacker/perl5/perlbrew/perls/perl-5.16.0/bin/perl'
+let g:perl_lib_path = getcwd() . '/lib'
+set ic
+set laststatus=2
+
+" ================ Cursor ============================
+
+highlight Cursor guifg=white guibg=white
+set guicursor=a:ver1-Cursor
+
+" ================ Functions =========================
+
+function! SuperTab()
+    if (strpart(getline('.'),col('.')-2,1)=~'^\W\?$')
+        return "\<Tab>"
+    else
+        return "\<C-n>"
+endfunction
+imap <Tab> <C-R>=SuperTab()<CR>
+
+" ================ Appearance ========================
+
+colorscheme Tomorrow-Night-Bright
+set background=dark
+set nonumber
