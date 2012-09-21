@@ -6,6 +6,9 @@ source $PERLBREW_ROOT/etc/bashrc
 # Autojump stuff
 source /usr/local/etc/autojump.zsh
 
+# Python stuff
+export PYTHONPATH=/Library/Python/2.7/site-packages
+
 PATH=~/bin:$PATH
 
 #Git ProTip - Delete all local branches that have been merged into HEAD
