@@ -133,3 +133,7 @@ alias rdmr='rake db:migrate:redo'
 alias gc='git clone'
 alias diary='mvim -v ~/diary/`date "+%m-%d-%Y"`.md'
 alias gpg='gpg2'
+alias rm='rm -rf'
+
+alias -s com=open -a Firefox # Lets me type https://www.crowdtilt.com on the command line
+
