@@ -5,8 +5,8 @@
      _____| / ___ ( (_| | |
     (_______\_____|\____|_|
 
-    # Yet Another Dotfile Repo v0.9
-    # Alpha Release Please Report Bugs
+    # Yet Another Dotfile Repo v1.0
+    # Now with Prezto!
 
     git clone https://github.com/skwp/dotfiles ~/.yadr
     cd ~/.yadr && rake install
@@ -17,7 +17,6 @@
 
 This is a collection of best of breed tools from across the web,
 from scouring other people's dotfile repos, blogs, and projects.
-
 
 ## What is YADR?
 
@@ -77,7 +76,7 @@ Please install fonts from fonts/ directory. These are used to give a really nice
 Homebrew is _the missing package manager for OSX_. To install:
 
 ```bash
-/usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+/usr/bin/ruby <(curl -fsSk https://raw.github.com/mxcl/homebrew/go)
 ```
 
 With homebrew installed, install some packages:
@@ -109,22 +108,15 @@ If that doesn't work, move the OSX supplied ctags [like so](http://www.mattpolit
 sudo mv /usr/bin/ctags /usr/bin/ctags_original
 ```
 
-### [oh-my-zsh](https://github.com/sorin-ionescu/oh-my-zsh)
-
-`git clone https://github.com/sorin-ionescu/oh-my-zsh.git ~/.oh-my-zsh`
-`cd ~/.oh-my-zsh && git submodule update --init --recursive`
-
-We prefer the @sorin-ionescu rewrite of Oh My Zsh. It will eventually be shipped
-as a submodule of YADR, although you can use the original @robbyrussell version as well.
-
-You only need to do the two commands above. The rest of the installation is done
-by YADR, which ships with a tie-in to sorin's OMZ.
-
 ### [fasd](https://github.com/clvv/fasd)
 
 fasd gives you handy shell commands `f`,`a`,`s`,`d`, and `z` to jump to recently used files.
+
 Read more at the project's home page. Or just type `z` followed by a partial reference to
 a recent directory to see how it works.
+
+fasd is currently shipped with yadr in the bin directory.
+In the future it will be included as a submodule.
 
 ## Installation
 
@@ -159,10 +151,7 @@ After a lifetime of bash, I am now using ZSH as my default shell because of its 
 and autocomplete features (the spelling fixer autocomplete is worth the money alone).
 
 Migrating from bash to zsh is essentially pain free. The zshrc provided here
-restores the only feature that I felt was 'broken' which is the Ctrl-R reverse history search.
-
-While I am not going to support bash out of the box here, YADR _should_ work with bash if
-you just source the _aliases_ file. However, you soul will sing if you install zsh. I promise.
+restores a few features that I felt was 'broken' including Ctrl-R reverse history search.
 
 Lots of things I do every day are done with two or three character
 mnemonic aliases. Please feel free to edit them:
@@ -170,28 +159,42 @@ mnemonic aliases. Please feel free to edit them:
     ae # alias edit
     ar # alias reload
 
+### [Prezto](https://github.com/sorin-ionescu/prezto)
+
+For a more complete Zsh experience we use **[Prezto](http://github.com/sorin-ionescu/prezto)**. 
+Prezto is included as a submodule.
+
+### Adding your own ZSH theme
+
+If you want to add your own zsh theme, you can place it into ~/.zsh.prompts and it will automatically be picked up by the prompt loader.
+
+Make sure you follow the naming convention of `prompt_[name]_setup`
+
+```
+touch ~/.zsh.prompts/prompt_mytheme_setup
+```
+
+Check out ~/.yadr/zsh/prezto-themes/prompt_skwp_setup for an example of how to write a prompt.
+See also the [Prezto](https://github.com/sorin-ionescu/prezto) project for more info on themes.
+
+### Customizing ZSH & Picking a theme
+
+If you want to customize your zsh experience, yadr provides two hooks via ~/.zsh.after/ and ~/.zsh.before/ directories.
+In these directories, you can place files to customize things that load before and after other zsh customizations that come from ~/.yadr/zsh/*
+
+For example, to override the theme, you can do something like this:
+```
+echo "prompt skwp" > ~/.zsh.after/prompt.zsh
+```
+
+Next time you load your shell, this file will be read and your prompt will be the skwp prompt. Use `prompt -l` to see the available prompts.
+
 ### ZSH Customizations
 
  * Vim mode
  * Bash style ctrl-R for reverse history finder
  * Ctrl-x,Ctrl-l to insert output of last command
  * Fuzzy matching - if you mistype a directory name, tab completion will fix it
-
-### How To Customize ZSH
-
-YADR allows you to completely customize your ZSH without having to fork and maintain the project. Here's how it works: YADR will
-source (include) any files in `.yadr/custom/zsh/before/*` or `.yadr/custom/zsh/after/*`. The `before` files are
-useful for setting the theme and plugins. `after` files allow you to override options set by YADR, define your own aliases, etc.
-
-To make your life easier, create a `zsh` folder in your Dropbox (or as a git repo) and symlink it into `~/.yadr/custom`. Do it like this:
-
-```bash
-ln -s ~/Dropbox/path/to/zsh ~/.yadr/custom/zsh
-```
-
-Create as many `before/whatever.zsh` or `after/whatever.zsh` files as you need within the `zsh` directory. Please see `custom/zsh.sample` for
-an example.
-
 
 ## Pry
 
@@ -293,6 +296,7 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
 #### Rails
 
  * `Cmd-Shift-R` to use vim-ruby-conque to run a spec file. `Cmd-Shift-L` to run from a line (individual it block), `,Cmd-Shift-R` to rerun the last run command (great for re-running specs)
+ * :Rspec1 and :Rspec2 to switch between rspec versions for the vim-ruby-conque runner
  * `,vv` and `,cc` to switch between view and controller
 
 #### Surround.vim customizations
@@ -348,7 +352,6 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
 
  * Cmd-Space to autocomplete. Tab for snipmate snippets.
  * `Cmd-k` and `Cmd-d` to type underscores and dashes (use Shift), since they are so common in code but so far away from home row
- * `Cmd-k` and `Cmd-d` to type underscores and dashes (use Shift), since they are so common in code but so far away from home row
  * `Ctrl-l` to insert a => hashrocket (thanks @garybernhardt)
  * `,.` to go to last edit location (same as `'.`) because the apostrophe is hard on the pinky
  * `,ci` to change inside any set of quotes/brackets/etc
@@ -381,6 +384,8 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
 
 #### Utility
 
+ * `crs`, `crc`, `cru` via abolish.vim, coerce to snake_case, camelCase, and UPPERCASE. There are more `:help abolish`
+ * `:NR` - NarrowRgn - use this on a bit of selected text to create a new split with just that text. Do some work on it, then :wq it to get the results back.
  * `,ig` - toggle visual indentation guides
  * `,cf` - Copy Filename of current file (full path) into system (not vi) paste buffer
  * `,cn` - Copy Filename of current file (name only, no path)
@@ -394,10 +399,12 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
  * `sk` - unsplit a link (k = up)
  * `,he` - Html Escape
  * `,hu` - Html Unescape
+ * `,hp` - Html Preview (open in Safari)
  * `Cmd-Shift-A` - align things (type a character/expression to align by, works in visual mode or by itself)
  * `:ColorToggle` - turn on #abc123 color highlighting (useful for css)
  * `:gitv` - Git log browsers
  * `,hi` - show current Highlight group. if you don't like the color of something, use this, then use `hi! link [groupname] [anothergroupname]` in your vimrc.after to remap the color. You can see available colors using `:hi`
+ * `,yr` - view the yankring - a list of your previous copy commands. also you can paste and hit `ctrl-p` for cycling through previous copy commands
 
 #### Ruby Debugger
 
@@ -470,7 +477,7 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
 
  * SplitJoin - easily split up things like ruby hashes into multiple lines or join them back together. Try :SplitjoinJoin and :SplitjoinSplit or use the bindings sj(split) and sk(unsplit) - mnemonically j and k are directions down and up
  * tabularize - align code effortlessly by using :Tabularize /[character] to align by a character, or try the keymaps
- * yankring - effortless sanity for pasting. every time you yank something it goes into a buffer. after hitting p to paste, use ctrl-p or ctrl-n to cycle through the paste options. great for when you accidentally overwrite your yank with a delete
+ * yankring - effortless sanity for pasting. every time you yank something it goes into a buffer. after hitting p to paste, use ctrl-p or ctrl-n to cycle through the paste options. great for when you accidentally overwrite your yank with a delete.
  * surround - super easy quote and tag manipulation - ysiw" - sourround inner word with quotes. ci"' - change inner double quotes to single quotes, etc
  * greplace - use :Gsearch to find across many files, replace inside the changes, then :Greplace to do a replace across all matches
  * ConqueTerm - embedded fully colorful shell inside your vim
@@ -490,6 +497,7 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
  * Arpeggio - allows you to define key-chord combinations
  * IndexedSearch - when you do searches will show you "Match 2 of 4" in the status line
  * delimitMate - automatically closes quotes
+ * SearchComplete - tab completion in the / search window
  * syntastic - automatic syntax checking when you save the file
  * repeat - adds `.` (repeat command) support for complex commands like surround.vim. i.e. if you perform a surround and hit `.`, it will Just Work (vim by default will only repeat the last piece of the complex command)
  * endwise - automatically closes blocks (if/end)
@@ -500,7 +508,9 @@ files contain key mappings as well (TODO: probably will move them out to skwp-ke
 
 ### Overriding vim settings
 
-You may use `~/.vimrc.before` for settings like the __leader__ setting. You may `~/.vimrc.after` for any additional overrides/settings.
+You may use `~/.vimrc.before` for settings like the __leader__ setting. 
+You may `~/.vimrc.after` (for those transitioning from janus) or in `~/.yadr/vim/after/.vimrc.after` for any additional overrides/settings.
+If you didn't have janus before, it is recommended to just put it in `~/.yadr/vim/after` so you can better manage your overrides.
 
 
 ### Adding your own vim plugins
@@ -557,7 +567,7 @@ and other places for the cream of the crop of vim awesomeness.
  * https://github.com/tpope
  * https://github.com/scrooloose
  * https://github.com/kana
- * https://github.com/robbyrussell
+ * https://github.com/sorin-ionescu
  * https://github.com/nelstrom
 
 And everything that's in the modules included in vim/bundle of course.
@@ -568,6 +578,7 @@ Please explore these people's work.
 
  * Initial Version: @skwp
  * Cleanup, auto installer: @kylewest
+ * Switch from oh-my-zsh to Presto: @JeanMertz
 
 
 ### For more tips and tricks

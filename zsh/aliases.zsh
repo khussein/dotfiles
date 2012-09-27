@@ -1,7 +1,7 @@
 # Aliases in this file are bash and zsh compatible
 
 # Don't change. The following determines where YADR is installed.
-yadr=`find -L ~ -type file -maxdepth 2 -name .yadr | head | sed 's:\.yadr\/::'`
+yadr=$HOME/.yadr
 
 # YADR support
 alias yav='yadr vim-add-plugin'
@@ -53,12 +53,14 @@ alias gcm='git ci -m'
 alias gcim='git ci -m'
 alias gci='git ci'
 alias gco='git co'
+alias gcp='git cp'
 alias ga='git add -A'
 alias guns='git unstage'
 alias gunc='git uncommit'
 alias gm='git merge'
 alias gms='git merge --squash'
 alias gam='git amend --reset-author'
+alias grv='git remote -v'
 alias gr='git rebase'
 alias gra='git rebase --abort'
 alias ggrc='git rebase --continue'
@@ -101,7 +103,8 @@ alias cl='clear'
 alias gz='tar -zcvf'
 
 # Ruby
-alias c='pry -r ./config/environment'
+alias c='pry -r ./config/environment' # Rails 3
+alias co='script/console --irb=pry' # Rails 2
 alias ts='thin start'
 alias ms='mongrel_rails start'
 alias tfdl='tail -f log/development.log'

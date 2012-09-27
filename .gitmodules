@@ -174,10 +174,6 @@
   path = vim/bundle/kana-vim-textobj-entire
   url = https://github.com/kana/vim-textobj-entire
   ignore = dirty
-[submodule "vim/bundle/chrismetcalf-vim-yankring"]
-  path = vim/bundle/chrismetcalf-vim-yankring
-  url = https://github.com/chrismetcalf/vim-yankring.git
-  ignore = dirty
 [submodule "vim/bundle/mattn-gist-vim"]
   path = vim/bundle/mattn-gist-vim
   url = https://github.com/mattn/gist-vim
@@ -344,3 +340,30 @@
 [submodule "vim/bundle/myusuf3-numbers"]
 	path = vim/bundle/myusuf3-numbers
 	url = https://github.com/myusuf3/numbers.vim.git
+[submodule "vim/bundle/vim-scripts-SearchComplete"]
+	path = vim/bundle/vim-scripts-SearchComplete
+	url = https://github.com/vim-scripts/SearchComplete.git
+  ignore = dirty
+[submodule "vim/bundle/briancollins-vim-jst"]
+	path = vim/bundle/briancollins-vim-jst
+	url = https://github.com/briancollins/vim-jst
+  ignore = dirty
+[submodule "vim/bundle/pangloss-vim-javascript"]
+	path = vim/bundle/pangloss-vim-javascript
+	url = https://github.com/pangloss/vim-javascript
+  ignore = dirty
+[submodule "vim/bundle/chrisbra-NrrwRgn"]
+	path = vim/bundle/chrisbra-NrrwRgn
+	url = https://github.com/chrisbra/NrrwRgn
+  ignore = dirty
+[submodule "zsh/prezto"]
+	path = zsh/prezto
+	url = https://github.com/sorin-ionescu/prezto.git
+  ignore = dirty
+[submodule "vim/bundle/skwp-YankRing"]
+	path = vim/bundle/skwp-YankRing
+	url = https://github.com/skwp/YankRing.vim
+  ignore = dirty
+[submodule "vim/bundle/tpope-vim-abolish"]
+	path = vim/bundle/tpope-vim-abolish
+	url = https://github.com/tpope/vim-abolish
