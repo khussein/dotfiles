@@ -1,6 +1,8 @@
 # Perlbrew stuff
 export PERLBREW_ROOT=$HOME/perl5/perlbrew
 export PERLBREW_HOME=$HOME/.perlbrew
+export VISUAL=$HOME/bin/subl
+export EDITOR=$HOME/bin/subl
 source $PERLBREW_ROOT/etc/bashrc
 
 # Autojump stuff
@@ -45,3 +47,5 @@ pullreq() {
 
     hub pull-request -b $BRANCH -h $REMOTE:${HEAD#refs/heads/} $1
 }
+
+source ~/.secrets

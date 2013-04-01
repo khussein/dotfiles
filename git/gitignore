@@ -32,3 +32,5 @@ Session.vim
 .sass-cache
 
 pubring.*
+
+gen_keys.pl

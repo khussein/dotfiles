@@ -90,6 +90,8 @@ alias gsm='git submodule'
 alias gsmi='git submodule init'
 alias gsmu='git submodule update'
 alias gt='git t'
+alias gla="git log --format='%aN' | sort -u" #Lists all the authors of a repo.
+
 
 # Common shell functions
 alias less='less -r'
@@ -137,3 +139,4 @@ alias rm='rm -rf'
 
 alias -s com=open -a Firefox # Lets me type https://www.crowdtilt.com on the command line
 
+alias irc='mosh irc -- screen -r'
